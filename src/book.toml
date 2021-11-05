@@ -4,3 +4,9 @@ language = "zh"
 multilingual = false
 src = "src"
 title = "动手学强化学习"
+
+[build]
+build-dir = "out"
+
+[output.html]
+git-repository-url = "https://github.com/subfish-zhou/Dive-into-Deep-RL"
