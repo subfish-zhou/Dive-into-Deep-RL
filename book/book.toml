@@ -1,0 +1,6 @@
+[book]
+authors = ["subfish-zhou"]
+language = "zh"
+multilingual = false
+src = "src"
+title = "动手学强化学习"

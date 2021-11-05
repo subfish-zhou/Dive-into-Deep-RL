@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>REINFORCE算法</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title_page.html">动手学深度强化学习</a></li><li class="chapter-item expanded "><a href="Introduction.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="REINFORCE.html" class="active"><strong aria-hidden="true">2.</strong> REINFORCE算法</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#reinforce算法" id="reinforce算法">REINFORCE算法</a></h1>
+<p>REINFORCE算法是由Ronald J. Williams在1992年的论文《联结主义强化学习的简单统计梯度跟踪算法》（Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning）中提出的基于策略的算法。</p>
+<p>REINFORCE算法的想法很自然：在学习过程中，产生高收益的行动应该多做些，导致坏结果的行动应该少做点。我们希望成功的学习结果会让策略函数收敛到能在环境中表现最好的情况。策略函数中动作概率的更新是由策略梯度实现的，因此REINFORCE被称为策略梯度算法。</p>
+<p>通过这个想法，我们即将设计的算法会有三个主要组件：</p>
+<ol>
+<li>一个策略函数，里面有一些参数，这些参数在学习过程中将要被更新；</li>
+<li>一个要最大化的目标，能给策略提供即时评价；</li>
+<li>一个参数更新方法。</li>
+</ol>
+<pre><code class="language-Python">from torch.distributions import Categorical
+import gym
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
+gamma = 0.99
+
+class Pi(nn.Module):
+    def __init__(self, in_dim, out_dim):
+        super(Pi, self).__init__()
+        layers = [
+            nn.Linear(in_dim, 64),
+            nn.ReLU(),
+            nn.Linear(64, out_dim),
+        ]
+        self.model = nn.Sequential(*layers)
+        self.onpolicy_reset()
+        self.train() # set training mode
+
+    def onpolicy_reset(self):
+        self.log_probs = []
+        self.rewards = []
+
+    def forward(self, x):
+        pdparam = self.model(x)
+        return pdparam
+
+    def act(self, state):
+        x = torch.from_numpy(state.astype(np.float32)) # to tensor
+        pdparam = self.forward(x) # forward pass
+        pd = Categorical(logits=pdparam) # probability distribution
+        action = pd.sample() # pi(a|s) in action via pd
+        log_prob = pd.log_prob(action) # log_prob of pi(a|s)
+        self.log_probs.append(log_prob) # store for training
+        return action.item()
+
+    def train(pi, optimizer):
+        # Inner gradient-ascent loop of REINFORCE algorithm
+        T = len(pi.rewards)
+        rets = np.empty(T, dtype=np.float32) # the returns
+        future_ret = 0.0
+        # compute the returns efficiently
+        for t in reversed(range(T)):
+            future_ret = pi.rewards[t] + gamma * future_ret
+            rets[t] = future_ret
+        rets = torch.tensor(rets)
+        log_probs = torch.stack(pi.log_probs)
+        loss = - log_probs * rets # gradient term; Negative for maximizing
+        loss = torch.sum(loss)
+        optimizer.zero_grad()
+        loss.backward() # backpropagate, compute gradients
+        optimizer.step() # gradient-ascent, update the weights
+        return loss
+
+    def main():
+        env = gym.make('CartPole-v0')
+        in_dim = env.observation_space.shape[0] # 4
+        out_dim = env.action_space.n # 2
+        pi = Pi(in_dim, out_dim) # policy pi_theta for REINFORCE
+        optimizer = optim.Adam(pi.parameters(), lr=0.01)
+        for epi in range(300):
+            state = env.reset()
+            for t in range(200): # cartpole max timestep is 200
+                action = pi.act(state)
+                state, reward, done, _ = env.step(action)
+                pi.rewards.append(reward)
+                env.render()
+                if done:
+                    break
+            loss = train(pi, optimizer) # train per episode
+            total_reward = sum(pi.rewards)
+            solved = total_reward &gt; 195.0
+            pi.onpolicy_reset() # onpolicy: clear memory after training
+            print(f'Episode {epi}, loss: {loss}, \
+            total_reward: {total_reward}, solved: {solved}')
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="Introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="Introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
