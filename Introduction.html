@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>介绍 - 动手学强化学习</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title_page.html">动手学深度强化学习</a></li><li class="chapter-item expanded "><a href="Introduction.html" class="active"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="REINFORCE.html"><strong aria-hidden="true">2.</strong> REINFORCE算法</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">动手学强化学习</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                        <a href="https://github.com/subfish-zhou/Dive-into-Deep-RL" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#介绍" id="介绍">介绍</a></h1>
+<h2><a class="header" href="#强化学习简介" id="强化学习简介">强化学习简介</a></h2>
+<p><strong>总问题</strong>：在环境中为实现优化目标做出序列决策。</p>
+<p><img src="1.1.png" alt="强化学习整体框架" />
+图1：强化学习MDP问题整体框架</p>
+<p><strong>要素</strong>：状态\( s_t\in \mathcal{S} \)，动作\( a_t\in\mathcal{A} \)，奖励\( r_t\in\mathcal{R} \)。</p>
+<p><strong>条件</strong>：马尔可夫性：后一个状态仅依赖于前一个状态，即\( s_{t+1}\sim P(s_{t+1}|s_t,a_t) \)。满足此性质的决策问题称为马尔可夫决策过程（Markov decision process，MDP），绝大多数的决策问题都满足此条件，本教程也只考虑MDP问题的求解。</p>
+<p><strong>要学习的函数</strong></p>
+<p>一个智能体为了实现最大化的总回报，要做出一系列的决策。这些决策可以用一些函数来表示和生成：</p>
+<ul>
+<li>策略函数\( \pi:\mathcal{S}\rightarrow\mathcal{A} \)，表示智能体在某状态下要执行何种动作的函数。</li>
+<li>价值函数\( V^{\pi}(s) \)或\( Q^{\pi}(s,a) \)，作为期望收益\( \mathbb{E}_\tau[R(\tau) ] \)的估计。</li>
+<li>环境模型\( P(s' | s,a) \)，表示在某种状态下做出某种动作时向下一个状态转移的概率。</li>
+</ul>
+<p>策略函数是最直接的生成策略的依据。例如AlphaGo的走子网络：根据当前棋盘局面（状态）判断下一手的位置。价值函数表示的是每一种可能的状态或行动能带来多大收益，用于间接生成策略，生成的方式可以是贪心的——每一次行动都按照当前最大的收益来实施，也可以是\( \epsilon \)-贪心的——由于价值函数的估计并不一定反映真实情况，我们只以\( \epsilon \)的概率实施贪心策略，同时以\( 1-\epsilon \)的概率探索新策略来丰富价值函数的估计。环境模型表示智能体对环境的认识，并由此能够预测自己的行动能够带来什么影响。</p>
+<h2><a class="header" href="#深度强化学习算法" id="深度强化学习算法">深度强化学习算法</a></h2>
+<p>深度强化学习对经典强化学习的提升在于，使用“最强函数拟合器”深度神经网络来表示要学习的函数。根据不同算法使用深度神经网络来表示的函数不同，Deep-RL算法可以分成如下的类别：</p>
+<p>基于策略的方法：</p>
+<ul>
+<li>REINFORCE</li>
+</ul>
+<p>基于价值的方法：</p>
+<ul>
+<li>SARSA</li>
+<li>DQN：Deep Q-Network</li>
+<li>Double DQN</li>
+<li>DQN + Prioritized Experience Replay 先验经验回放</li>
+<li>QT-OPT</li>
+</ul>
+<p>基于模型的方法：</p>
+<ul>
+<li>iLQR：Iterative Linear Quadratic Regulator</li>
+<li>MPC：Model Predictive Control</li>
+<li>MCTS：Monte Carlo Tree Search</li>
+</ul>
+<p>价值和策略结合的方法：</p>
+<ul>
+<li>Actor-Critic：
+<ul>
+<li>A2C：Advantage Actor-Critic</li>
+<li>GAE：Actor-Critic with Generalized Advantage Estimation</li>
+<li>A3C：Asynchronous Advantage Actor-Critic</li>
+</ul>
+</li>
+<li>TRPO：Trust Region Policy Optimization</li>
+<li>PPO：Proximal Policy Optimization</li>
+<li>SAC：Soft Actor-Critic</li>
+</ul>
+<p>模型和价值或和策略结合的方法：</p>
+<ul>
+<li>Dyna-Q / Dyna-AC</li>
+<li>AlphaZero</li>
+<li>I2A：Imagination Augmented Agents</li>
+<li>VPN：Value Prediction Networks</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="title_page.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="REINFORCE.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="title_page.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="REINFORCE.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
